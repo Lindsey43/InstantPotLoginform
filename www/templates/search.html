@@ -1,0 +1,41 @@
+ <ion-view view-title="Search">
+        <div class='bar bar-subheader item-input-inset bar-light'>
+        <!-- clear button didn't work within the search input. this is an open issue within ionic. So i had to put it outside the input --> 
+		<button class="button button-clear" ng-click="clearInput()">
+            	<i class="icon ion-ios-close" ></i>
+            </button>
+	        <label class="item-input-wrapper">
+	            <i class="icon ion-search placeholder-icon"></i>
+			    <!--we add ng-model directive to search input to allow for two way data binding that makes the data and view connected -->
+	            <input type="search" placeholder="Search" ng-model="nehmat.userInput">   
+	        </label>
+	        <button class="button button-assertive" ng-click="getData()">
+		      <i class="icon ion-search"></i>
+		    </button>
+	    </div>
+
+	    <ion-content padding="true" class = "has-subheader">
+	    <ion-slide-box on-slide-changed="slideHasChanged($index)">
+		  <ion-slide ng-repeat="item in searches">
+		   <div class="list card">
+			  <div class="item item-avatar">
+			    <img ng-src="{{ item.image }}">
+			    <h4>{{ item.name }}</h4>
+			    <p>{{ item.sku }}</p>
+			  </div>
+
+			  <div class="item item-image">
+			    <img class= "coverImage" ng-src="{{ item.image }}">
+			  </div>
+
+			  <a class="item item-icon-left assertive" href="#">
+			    <i class="icon ion-social-usd"></i>
+			    {{ item.salePrice}}
+			  </a>
+
+			</div>
+		  </ion-slide>
+		</ion-slide-box>
+          
+        </ion-content>
+      </ion-view>
